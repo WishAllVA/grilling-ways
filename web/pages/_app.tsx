@@ -6,6 +6,7 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Theme from '../components/Theme/Theme'
+import Navbar from '../components/Navbar/Navbar'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -23,6 +24,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={Theme}>
         <CssBaseline />
+        <Navbar />
         <Component {...pageProps} />
       </ThemeProvider>
     </React.Fragment>

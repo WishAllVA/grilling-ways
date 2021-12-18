@@ -15,7 +15,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <Navbar></Navbar>
+        <div style={{ width: '100vw', position: 'absolute', top: '1vh' }}>
+        </div>
         <h1 className={styles.title}>
           Welcome to Grilling ways!
         </h1>

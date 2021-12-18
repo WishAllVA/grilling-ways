@@ -1,9 +1,33 @@
-.logo {
-    margin-right: 1rem;
-    /* width: 30px;
-    height: 30px;
-    background-image: url('/logo.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat; */
+
+.selectedNavbarItem {
+    padding: 20px;
+    display: inline-block;
+    position: relative;
+    color: #05d5b0;
+}
+
+.selectedNavbarItem a::before {
+    width: 100%;
+    bottom: 10px
+}
+
+.navbarItem {
+    padding: 20px;
+    display: inline-block;
+    position: relative;
+}
+
+.navbarItem a::before {
+    transition: 300ms;
+    height: 5;
+    content: '';
+    position: relative;
+    background-color: #05d5b0;
+    width: 0%;
+    bottom: 10px;
+    color: blue   
+}
+
+.navbarItem a:hover .navbarItem a::before {
+    width: 100%;
 }

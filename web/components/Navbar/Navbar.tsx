@@ -3,6 +3,8 @@ import { Disclosure } from '@headlessui/react';
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Navbar.module.css";
+import NavbarLink from "./components/NavbarLink";
+import { routes } from "./constants";
 
 const Navbar: React.FC = () => {
     const [openModal, setOpenModal] = React.useState(false);
@@ -35,24 +37,8 @@ const Navbar: React.FC = () => {
                                     </Link>
                                 </div>
                             </div>
-                            <div className="absolute inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:p-0">
-                                <div className="hidden lg:block lg:mr-6">
-                                    <Link href="/">
-                                        <a>Home</a>
-                                    </Link>
-                                    <Link href="/about">
-                                        <a>About</a>
-                                    </Link>
-                                    <Link href="/contact">
-                                        <a>Contact</a>
-                                    </Link>
-                                    <Link href="/login">
-                                        <a>Log in</a>
-                                    </Link>
-                                    <Link href="/signup">
-                                        <a>Signup</a>
-                                    </Link>
-                                </div>
+                            <div className="relative inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:p-6">
+                                <NavbarLink routes={routes} />
                             </div>
                         </div>
                     </div>

@@ -6,6 +6,7 @@ interface Button {
         color?: string;
         width?: string;
         height?: string;
+        display?: string;
     };
 }
 

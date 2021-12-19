@@ -2,8 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Button from '../components/Button/Button'
-import Navbar from '../components/Navbar/Navbar'
+import Posts from '../components/Posts/Posts'
 
 const Home: NextPage = () => {
   return (
@@ -15,19 +14,8 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div style={{ width: '100vw', position: 'absolute', top: '1vh' }}>
-        </div>
-        <h1 className={styles.title}>
-          Welcome to Grilling ways!
-        </h1>
+        <Posts />
 
-        <p className={styles.description}>
-          Get started by creating a new account or logging in.
-        </p>
-
-        <div className={styles.grid}>
-        </div>
-        <Button title="Log in" onClick={() => { window.alert('Button clicked!') }}></Button>
       </main>
 
       <footer className={styles.footer}>

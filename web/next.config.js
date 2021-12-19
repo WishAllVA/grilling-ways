@@ -6,4 +6,12 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },
+  images: {
+    domains: [
+      'www.google.com',
+      'images.unsplash.com',
+      'www.simplyrecipes.com',
+      'www.vegrecipesofindia.com',
+    ],
+  },
 }

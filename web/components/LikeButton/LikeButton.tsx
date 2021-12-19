@@ -13,7 +13,7 @@ const LikeButton: React.FC<LikeButtonProp> = ({ likes, liked, onLike }) => {
                 color: '#fff',
                 width: '100%',
             } : {
-                backgroundColor: 'green',
+                backgroundColor: '#a9a9a9',
                 color: '#000',
                 width: '100%',
             }}

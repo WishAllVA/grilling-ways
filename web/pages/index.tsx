@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Posts from '../components/Posts/Posts'
+import CreatePost from '../components/CreatePost/CreatePost'
 
 const Home: NextPage = () => {
   return (
@@ -14,6 +15,9 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
+        <div className="m-5">
+          <CreatePost />
+        </div>
         <Posts />
 
       </main>

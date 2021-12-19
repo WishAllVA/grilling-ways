@@ -5,6 +5,8 @@ import Image from "next/image";
 import styles from "./Navbar.module.css";
 import NavbarLink from "./components/NavbarLink";
 import { routes } from "./constants";
+import MobileMenu from "./components/MobileMenu";
+import MobileButton from "./components/MobileButton";
 
 const Navbar: React.FC = () => {
     const [openModal, setOpenModal] = React.useState(false);
@@ -23,7 +25,10 @@ const Navbar: React.FC = () => {
                 <>
                     <div className="mx-auto px-5 py-2 ml-4 md:ml-14">
                         <div className="relative flex items-center justify-between h-16">
-                            <div className="flex-1 flex items-center justify-start sm:items-stretch sm:justify-start">
+                            <div className="absolute-inset-y-0 right-0 flex items-center lg:hidden">
+                                <MobileButton open={open} />
+                            </div>
+                            <div className="flex-1 flex items-center justify-end sm:items-stretch lg:justify-start">
                                 <div className="flex-shrink-0 flex items-center">
                                     <Link href="/" passHref>
                                         <a>
@@ -42,6 +47,7 @@ const Navbar: React.FC = () => {
                             </div>
                         </div>
                     </div>
+                    <MobileMenu routes={routes} />
                 </>
             )}
         </Disclosure>

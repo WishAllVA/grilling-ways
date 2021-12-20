@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_comments_comments",
+  "info": {
+    "displayName": "comments",
+    "icon": "ad"
+  },
+  "options": {},
+  "attributes": {
+    "author": {
+      "type": "string"
+    },
+    "likes": {
+      "type": "biginteger"
+    },
+    "dislikes": {
+      "type": "biginteger"
+    }
+  }
+}

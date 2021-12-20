@@ -1,11 +1,22 @@
-import type { NextPage } from 'next'
+import type { InferGetServerSidePropsType, GetServerSideProps, NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Posts from '../components/Posts/Posts'
 import CreatePost from '../components/CreatePost/CreatePost'
+import { routes, pageRoutes } from './api/routes'
+import PostProps from '../types/Post'
 
-const Home: NextPage = () => {
+const Home: NextPage = ({
+  homePageProps,
+  postsProps
+}: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const posts: PostProps[] = []
+  const { data } = postsProps
+  data?.forEach((element: any) => {
+    const { title, description, id, author, comments, likes, liked, time, imageUrl } = element.attributes
+    posts.push({ id: element.id, title, description, author, comments, likes, liked, time, imageUrl })
+  });
   return (
     <div className={styles.container}>
       <Head>
@@ -18,7 +29,7 @@ const Home: NextPage = () => {
         <div className="m-5">
           <CreatePost />
         </div>
-        <Posts />
+        <Posts posts={posts} />
 
       </main>
 
@@ -36,6 +47,14 @@ const Home: NextPage = () => {
       </footer>
     </div >
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const homePageRes = await fetch(pageRoutes.home)
+  const postsRes = await fetch(routes.posts)
+  const homePageProps = await homePageRes.json()
+  const postsProps = await postsRes.json()
+  return { props: { homePageProps, postsProps } }
 }
 
 export default Home

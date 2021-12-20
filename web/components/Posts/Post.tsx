@@ -22,7 +22,7 @@ const Post: React.FC<Post> = ({ title, description, author, id, comments, likes 
             <p>By <span style={{ fontStyle: 'italic' }}>{author}</span></p>
             <p>{comments}</p>
             <p>{liked}</p>
-            <p>{time ? formatDate(new Date(Number(time.split('-')[0]), Number(time?.split('-')[1]), Number(time?.split('-')[2])), 'de') : ''}</p>
+            <p>{time ? new Date(time).toLocaleString() : ''}</p>
             <Image
                 key={id}
                 width={200}

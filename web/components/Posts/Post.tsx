@@ -30,15 +30,15 @@ const Post: React.FC<Post> = ({ title, description, author, id, comments, likes 
                 src={imageUrl || ''} alt="Butter Chicken"
             />
             <p>{description}</p>
-            <div className="flex-col lg:flex-row flex justify-items space-between">
-                <div className="lg:mr-2 flex-1">
+            <div className="flex-row flex justify-items space-between">
+                <div className="mr-2 flex-1">
                     <LikeButton
                         likes={likesCount}
                         onLike={handleLike}
                         liked={likedByUser}
                     />
                 </div>
-                <div className="sm:md-2 lg:mr-2 flex-1">
+                <div className="mr-2 flex-1">
                     <CommentButton />
                 </div>
                 <div className="flex-1">

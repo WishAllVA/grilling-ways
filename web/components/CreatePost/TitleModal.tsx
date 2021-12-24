@@ -5,7 +5,7 @@ const TitleModal: React.FC = () => {
     return (
         <DialogContent>
             <DialogContentText>
-                To create a recipe, first please give it a meaningful title. (e.g. "Pizza")
+                To create a recipe, first please give it a meaningful title. (e.g. Pizza)
             </DialogContentText>
             <TextField
                 autoFocus

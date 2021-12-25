@@ -10,7 +10,7 @@ interface TitleModalProps {
     onNext: () => void;
 }
 
-const TitleModal: React.FC<TitleModalProps> = ({ addTitleandDescription, onCancel, onNext }) => {
+const TitleModal: React.FC<TitleModalProps> = ({ recipe, addTitleandDescription, onCancel, onNext }) => {
     return (
         <>
             <DialogContent>

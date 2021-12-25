@@ -1,3 +1,5 @@
+import Comment from './Comment';
+
 interface Post {
     id: string;
     title: string;
@@ -5,7 +7,7 @@ interface Post {
     time?: string;
     imageUrl?: string;
     author?: string;
-    comments?: string[];
+    comments?: Comment[];
     likes?: number;
     liked?: boolean;
 }

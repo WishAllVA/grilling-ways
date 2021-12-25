@@ -2,7 +2,8 @@
   "collectionName": "components_comments_comments",
   "info": {
     "displayName": "comments",
-    "icon": "ad"
+    "icon": "ad",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -14,6 +15,9 @@
     },
     "dislikes": {
       "type": "biginteger"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }

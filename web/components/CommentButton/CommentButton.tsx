@@ -1,13 +1,15 @@
 import React from "react";
 import Button from "../Button/Button";
 
-const CommentButton: React.FC = () => {
+interface CommentButtonProps {
+    onClick: () => void;
+}
+
+const CommentButton: React.FC<CommentButtonProps> = ({ onClick }) => {
     return (
         <Button
             title={'Comment'}
-            onClick={() => {
-                console.log('Comment Button Clicked');
-            }}
+            onClick={onClick}
             style={{
                 backgroundColor: 'blue',
                 color: '#fff',

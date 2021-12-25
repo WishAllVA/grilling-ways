@@ -5,12 +5,22 @@ import Button from "../Button/Button";
 
 interface TitleModalProps {
     recipe: Recipe;
-    addTitleandDescription: (title: string, description: string) => void;
+    updateRecipe: (recipe: Recipe) => void;
     onCancel: () => void;
     onNext: () => void;
 }
 
-const TitleModal: React.FC<TitleModalProps> = ({ recipe, addTitleandDescription, onCancel, onNext }) => {
+const TitleModal: React.FC<TitleModalProps> = ({ recipe, updateRecipe, onCancel, onNext }) => {
+    const [title, setTitle] = React.useState('');
+    const [description, setDescription] = React.useState('');
+    const addTitleandDescription = (title: string, description: string) => {
+        updateRecipe({
+            ...recipe,
+            recipeTitle: title,
+            recipeDescription: description
+        });
+    };
+
     return (
         <>
             <DialogContent>
@@ -25,6 +35,8 @@ const TitleModal: React.FC<TitleModalProps> = ({ recipe, addTitleandDescription,
                     type="email"
                     fullWidth
                     variant="standard"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                 />
                 <TextField
                     margin="dense"
@@ -33,11 +45,16 @@ const TitleModal: React.FC<TitleModalProps> = ({ recipe, addTitleandDescription,
                     type="email"
                     fullWidth
                     variant="standard"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
                 />
             </DialogContent>
             <DialogActions>
                 <Button title={'Cancel'} onClick={onCancel} />
-                <Button title={'Next'} onClick={onNext} />
+                <Button title={'Next'} onClick={() => {
+                    addTitleandDescription(title, description);
+                    onNext();
+                }} />
             </DialogActions>
         </>
     );

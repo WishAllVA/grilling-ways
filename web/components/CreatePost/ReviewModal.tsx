@@ -34,9 +34,17 @@ const ReviewModal: React.FC<RecipeModalProps> = ({ recipe, onSubmit, onBack, onC
                     </Typography>
                     {
                         ingredients?.map((ingredient, index) => (
-                            <Typography key={index} variant="body1">
-                                {ingredient}
-                            </Typography>
+                            <>
+                                <Typography key={index} variant="body1">
+                                    {ingredient.ingredientName}
+                                </Typography>
+                                <Typography key={index} variant="body1">
+                                    {ingredient.ingredientQuantity}
+                                </Typography>
+                                <Typography key={index} variant="body1">
+                                    {ingredient.ingredientUnit}
+                                </Typography>
+                            </>
                         ))
                     }
                 </DialogContentText>
@@ -46,16 +54,21 @@ const ReviewModal: React.FC<RecipeModalProps> = ({ recipe, onSubmit, onBack, onC
                     </Typography>
                     {
                         steps?.map((step, index) => (
-                            <Typography key={index} variant="body1">
-                                {step}
-                            </Typography>
+                            <>
+                                <Typography key={index} variant="body1">
+                                    {step.stepTitle}
+                                </Typography>
+                                <Typography key={index} variant="body1">
+                                    {step.stepDescription}
+                                </Typography>
+                            </>
                         ))
                     }
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button title={'Back'} onClick={onBack} />
                 <Button title={'Cancel'} onClick={onCancel} />
+                <Button title={'Back'} onClick={onBack} />
                 <Button title={'Finish'} onClick={onSubmit} />
             </DialogActions>
         </>

@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import Button from '../Button/Button';
-import Ingredient from "../../types/Ingredient";
-import RecipeStep from "../../types/RecipeStep";
 import Recipe from "../../types/Recipe";
 import CreatePostModal from "./CreatePostModal";
 
@@ -59,29 +57,9 @@ const CreatePost: React.FC = () => {
         setOpen(false);
     };
 
-    const addTitleandDescription = (title: string, description: string) => {
-        setRecipe({
-            ...recipe,
-            recipeTitle: title,
-            recipeDescription: description
-        });
-    };
-
-    const addIngredient = (addIngredientParams: Ingredient) => {
-        const { ingredientName, ingredientQuantity, ingredientUnit } = addIngredientParams;
-        setRecipe({
-            ...recipe,
-            ingredients: [...recipe.ingredients, { ingredientName, ingredientQuantity, ingredientUnit }]
-        });
-    };
-
-    const addStep = (addStepParams: RecipeStep) => {
-        const { stepTitle, stepDescription } = addStepParams;
-        setRecipe({
-            ...recipe,
-            steps: [...recipe.steps, { stepTitle, stepDescription }]
-        });
-    };
+    const updateRecipe = (recipe: Recipe) => {
+        setRecipe(recipe);
+    }
 
     return (
         <div>
@@ -93,13 +71,11 @@ const CreatePost: React.FC = () => {
                 onClose={handleClose}
                 onNext={handleNext}
                 onBack={handleBack}
-                addTitleandDescription={addTitleandDescription}
-                addIngredient={addIngredient}
-                addStep={addStep}
                 onSubmit={() => {
                     console.log(recipe);
                 }}
                 recipe={recipe}
+                updateRecipe={updateRecipe}
             />
         </div>
     )

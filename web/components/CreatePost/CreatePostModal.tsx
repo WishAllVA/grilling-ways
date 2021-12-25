@@ -4,8 +4,6 @@ import TitleModal from './TitleModal';
 import IngredientsModal from './IngredientsModal';
 import RecipeStepsModal from './RecipeStepsModal';
 import ReviewModal from './ReviewModal';
-import Ingredient from "../../types/Ingredient";
-import RecipeStep from "../../types/RecipeStep";
 import Recipe from "../../types/Recipe";
 
 interface CreatePostModalProps {
@@ -13,17 +11,15 @@ interface CreatePostModalProps {
     steps: { stepId: number, stepTitle?: string, stepDescription?: string }[];
     currentStep: number;
     recipe: Recipe;
+    updateRecipe: (recipe: Recipe) => void;
     onClose: () => void;
     onNext: () => void;
     onBack: () => void;
-    addTitleandDescription: (title: string, description: string) => void;
-    addIngredient: (ingredients: Ingredient) => void;
-    addStep: (steps: RecipeStep) => void;
     onSubmit: () => void;
 }
 
 const CreatePostModal: React.FC<CreatePostModalProps> = (props: CreatePostModalProps) => {
-    const { open, steps, currentStep, recipe, onClose, onNext, onBack, onSubmit, addTitleandDescription, addIngredient, addStep } = props;
+    const { open, steps, currentStep, recipe, updateRecipe, onClose, onNext, onBack, onSubmit } = props;
     return (
         <div>
             <Dialog open={open} onClose={onClose}>
@@ -41,7 +37,7 @@ const CreatePostModal: React.FC<CreatePostModalProps> = (props: CreatePostModalP
                             onCancel={onClose}
                             onNext={onNext}
                             recipe={recipe}
-                            addTitleandDescription={addTitleandDescription}
+                            updateRecipe={updateRecipe}
                         /> : null
                 }
                 {
@@ -50,16 +46,19 @@ const CreatePostModal: React.FC<CreatePostModalProps> = (props: CreatePostModalP
                             onBack={onBack}
                             onNext={onNext}
                             onCancel={onClose}
-                            addIngredient={addIngredient}
+                            recipe={recipe}
+                            updateRecipe={updateRecipe}
                         /> : null
                 }
                 {
-                    currentStep === 3 ? <RecipeStepsModal
-                        onBack={onBack}
-                        onNext={onNext}
-                        onCancel={onClose}
-                        addRecipeStep={addStep}
-                    /> : null
+                    currentStep === 3 ?
+                        <RecipeStepsModal
+                            onBack={onBack}
+                            onNext={onNext}
+                            onCancel={onClose}
+                            recipe={recipe}
+                            updateRecipe={updateRecipe}
+                        /> : null
                 }
                 {
                     currentStep === 4 ?

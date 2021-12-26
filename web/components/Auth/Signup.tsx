@@ -14,7 +14,7 @@ const Signup: React.FC = () => {
             <CardContent className="flex flex-col">
                 <div className="mb-10 ml-8">
                     <Typography variant="h5" component="h2">
-                        Let's get you started!!!
+                        Let&apos;s get you started!!!
                     </Typography>
                 </div>
                 <div className="mb-5">

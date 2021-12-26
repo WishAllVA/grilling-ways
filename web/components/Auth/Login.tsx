@@ -43,7 +43,7 @@ const Login: React.FC = () => {
                 </div>
                 <div className="flex">
                     <Typography style={{ lineHeight: '2.5rem' }} variant="body2" color="textSecondary" component="p">
-                        Don't have an account?
+                        Don&apos;t have an account?
                     </Typography>
                     <Button title="Sign Up" onClick={() => { router.push('/signup') }} />
                 </div>

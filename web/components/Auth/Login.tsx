@@ -78,6 +78,10 @@ const Login: React.FC = () => {
                     </Typography>
                     <Button title="Sign Up" onClick={() => { router.push('/signup') }} />
                 </div>
+                <div>
+                    <Button title="Login with Google" onClick={() => { router.push(routes.google) }} />
+
+                </div>
             </CardActions>
         </Card >
 

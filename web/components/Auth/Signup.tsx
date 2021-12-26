@@ -51,7 +51,7 @@ const Signup: React.FC = () => {
 
 
     return (
-        <Card className="w-4/12 mx-auto my-6 pt-6 px-6 flex flex-col justify-center content-center">
+        <Card className="md:w-4/12 mx-auto md:my-6 pt-6 px-6 flex flex-col justify-center content-center">
             <CardContent className="flex flex-col">
                 <div className="mb-8 ml-14">
                     <Typography variant="h5" component="h2">
@@ -100,7 +100,7 @@ const Signup: React.FC = () => {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <div className="mb-5">
+                <div className="mb-3">
                     <TextField
                         label="Confirm Password"
                         variant="filled"

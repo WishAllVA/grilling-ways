@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, CardContent, CardActions, Typography, TextField } from "@material-ui/core";
+import { Card, CardContent, CardActions, Icon, Typography, TextField } from "@material-ui/core";
+import { Facebook } from '@material-ui/icons';
 import Button from "../Button/Button";
 import Router, { useRouter } from "next/router";
 import { routes } from '../../pages/api/routes';
@@ -39,7 +40,7 @@ const Login: React.FC = () => {
     };
 
     return (
-        <Card className="w-4/12 mx-auto my-12 pt-12 px-6 flex flex-col justify-center content-center">
+        <Card className="md:w-4/12 mx-auto md:my-12 md:pt-12 px-6 flex flex-col justify-center">
             <CardContent className="flex-col">
                 <div className="mb-10 ml-8">
                     <Typography variant="h5" component="h2">
@@ -68,7 +69,7 @@ const Login: React.FC = () => {
                     />
                 </div>
             </CardContent>
-            <CardActions className="flex-col justify-around mt-4 mb-4">
+            <CardActions className="flex-col justify-around lg:mt-4 mb-4">
                 <div className="mb-4">
                     <Button title="Login" onClick={() => { login() }} />
                 </div>
@@ -78,8 +79,12 @@ const Login: React.FC = () => {
                     </Typography>
                     <Button title="Sign Up" onClick={() => { router.push('/signup') }} />
                 </div>
-                <div>
-                    <Button title="Login with Google" onClick={() => { router.push(routes.google) }} />
+                <div className="flex">
+                    <Typography style={{ lineHeight: '1.5rem' }} variant="body2" color="textSecondary" component="p">
+                        Login with
+                    </Typography>
+                    <Facebook className="ml-2" style={{ cursor: 'pointer' }} onClick={() => { router.push(routes.google) }} />
+                    {/* <Button title="Google" onClick={() => { router.push(routes.google) }} /> */}
 
                 </div>
             </CardActions>

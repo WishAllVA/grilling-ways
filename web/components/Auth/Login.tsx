@@ -2,11 +2,42 @@ import React from "react";
 import { Card, CardContent, CardActions, Typography, TextField } from "@material-ui/core";
 import Button from "../Button/Button";
 import Router, { useRouter } from "next/router";
+import { routes } from '../../pages/api/routes';
 
 const Login: React.FC = () => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const router = useRouter();
+
+    const login = async () => {
+        // e.preventDefault();
+        try {
+            const res = await fetch(routes.login, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    identifier: email,
+                    password
+                })
+            });
+            if (res.status === 200) {
+                const data = await res.json();
+                window.alert("Successfully logged in");
+                const { jwt, user } = data;
+                window.localStorage.setItem('jwt', jwt)
+                window.localStorage.setItem('userData', JSON.stringify(user))
+                router.push("/");
+
+            } else {
+                window.alert("Something went wrong");
+            }
+        } catch (err) {
+
+        }
+    };
+
     return (
         <Card className="w-4/12 mx-auto my-12 pt-12 px-6 flex flex-col justify-center content-center">
             <CardContent className="flex-col">
@@ -18,9 +49,9 @@ const Login: React.FC = () => {
                 <div className="mb-5">
                     <TextField
                         autoFocus
-                        label="Email"
+                        label="Email or Username"
                         variant="filled"
-                        type="email"
+                        type="text"
                         fullWidth
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -39,7 +70,7 @@ const Login: React.FC = () => {
             </CardContent>
             <CardActions className="flex-col justify-around mt-4 mb-4">
                 <div className="mb-4">
-                    <Button title="Login" onClick={() => { window.alert('Login works') }} />
+                    <Button title="Login" onClick={() => { login() }} />
                 </div>
                 <div className="flex">
                     <Typography style={{ lineHeight: '2.5rem' }} variant="body2" color="textSecondary" component="p">

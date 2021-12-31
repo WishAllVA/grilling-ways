@@ -44,8 +44,8 @@ const StepsModal: React.FC<RecipeStepsModalProps> = ({ recipe, updateRecipe, onB
                                         value={step.stepTitle}
                                         onChange={(e) => {
                                             const { value } = e.target;
-                                            setSteps(steps.map((step, index) => {
-                                                if (index === index) {
+                                            setSteps(steps.map((step, indexStep) => {
+                                                if (index === indexStep) {
                                                     return {
                                                         ...step,
                                                         stepTitle: value
@@ -66,8 +66,8 @@ const StepsModal: React.FC<RecipeStepsModalProps> = ({ recipe, updateRecipe, onB
                                         value={step.stepDescription}
                                         onChange={(e) => {
                                             const { value } = e.target;
-                                            setSteps(steps.map((step, index) => {
-                                                if (index === index) {
+                                            setSteps(steps.map((step, indexStep) => {
+                                                if (index === indexStep) {
                                                     return {
                                                         ...step,
                                                         stepDescription: value

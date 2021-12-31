@@ -46,8 +46,8 @@ const IngredientsModal: React.FC<IngredientModalProps> = ({ recipe, updateRecipe
                                         value={ingredient.ingredientName}
                                         onChange={(e) => {
                                             const { value } = e.target;
-                                            setIngredients(ingredients.map((ingredient, index) => {
-                                                if (index === index) {
+                                            setIngredients(ingredients.map((ingredient, indexIng) => {
+                                                if (index === indexIng) {
                                                     return {
                                                         ...ingredient,
                                                         ingredientName: value
@@ -68,8 +68,8 @@ const IngredientsModal: React.FC<IngredientModalProps> = ({ recipe, updateRecipe
                                         value={ingredient.ingredientQuantity}
                                         onChange={(e) => {
                                             const { value } = e.target;
-                                            setIngredients(ingredients.map((ingredient, index) => {
-                                                if (index === index) {
+                                            setIngredients(ingredients.map((ingredient, indexIng) => {
+                                                if (index === indexIng) {
                                                     return { ...ingredient, ingredientQuantity: value };
                                                 }
                                                 return ingredient;
@@ -88,8 +88,8 @@ const IngredientsModal: React.FC<IngredientModalProps> = ({ recipe, updateRecipe
                                         value={ingredient.ingredientUnit}
                                         onChange={(e) => {
                                             const { value } = e.target;
-                                            setIngredients(ingredients.map((ingredient, index) => {
-                                                if (index === index) {
+                                            setIngredients(ingredients.map((ingredient, indexIng) => {
+                                                if (index === indexIng) {
                                                     return { ...ingredient, ingredientUnit: value };
                                                 }
                                                 return ingredient;
@@ -117,6 +117,7 @@ const IngredientsModal: React.FC<IngredientModalProps> = ({ recipe, updateRecipe
                         ...recipe,
                         ingredients
                     });
+                    console.log(ingredients)
                     onNext();
                 }} />
             </DialogActions>

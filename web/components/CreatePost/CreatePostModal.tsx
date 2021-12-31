@@ -15,14 +15,14 @@ interface CreatePostModalProps {
     onClose: () => void;
     onNext: () => void;
     onBack: () => void;
-    onSubmit: () => void;
+    onSubmit: (recipe: Recipe) => void;
 }
 
 const CreatePostModal: React.FC<CreatePostModalProps> = (props: CreatePostModalProps) => {
     const { open, steps, currentStep, recipe, updateRecipe, onClose, onNext, onBack, onSubmit } = props;
     return (
         <div>
-            <Dialog open={open} onClose={onClose}>
+            <Dialog open={open} onClose={onClose} fullWidth >
                 <Stepper activeStep={currentStep - 1} alternativeLabel>
                     {steps.map((step) => (
                         <Step key={step.stepId}>

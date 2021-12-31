@@ -3,7 +3,11 @@ import Button from '../Button/Button';
 import Recipe from "../../types/Recipe";
 import CreatePostModal from "./CreatePostModal";
 
-const CreatePost: React.FC = () => {
+interface CreatePostProps {
+    createPost: (recipe: Recipe) => void;
+}
+
+const CreatePost: React.FC<CreatePostProps> = ({ createPost }) => {
     const [open, setOpen] = React.useState(false);
     const [currentStep, setCurrentStep] = useState(1);
     const [recipe, setRecipe] = useState<Recipe>({
@@ -71,9 +75,7 @@ const CreatePost: React.FC = () => {
                 onClose={handleClose}
                 onNext={handleNext}
                 onBack={handleBack}
-                onSubmit={() => {
-                    console.log(recipe);
-                }}
+                onSubmit={createPost}
                 recipe={recipe}
                 updateRecipe={updateRecipe}
             />

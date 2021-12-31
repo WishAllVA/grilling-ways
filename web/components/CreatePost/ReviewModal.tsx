@@ -5,7 +5,7 @@ import Button from "../Button/Button";
 
 interface RecipeModalProps {
     recipe: Recipe;
-    onSubmit: () => void;
+    onSubmit: (recipe: Recipe) => void;
     onBack: () => void;
     onCancel: () => void;
 }
@@ -34,17 +34,15 @@ const ReviewModal: React.FC<RecipeModalProps> = ({ recipe, onSubmit, onBack, onC
                     </Typography>
                     {
                         ingredients?.map((ingredient, index) => (
-                            <>
-                                <Typography key={index} variant="body1">
+                            <div className="flex justify-around">
+                                <Typography key={index} variant="body1" className="flex-1">
                                     {ingredient.ingredientName}
                                 </Typography>
-                                <Typography key={index} variant="body1">
-                                    {ingredient.ingredientQuantity}
-                                </Typography>
-                                <Typography key={index} variant="body1">
+                                <Typography key={index} variant="body1" className="flex-1">
+                                    {ingredient.ingredientQuantity} &nbsp;
                                     {ingredient.ingredientUnit}
                                 </Typography>
-                            </>
+                            </div>
                         ))
                     }
                 </DialogContentText>
@@ -69,7 +67,9 @@ const ReviewModal: React.FC<RecipeModalProps> = ({ recipe, onSubmit, onBack, onC
             <DialogActions>
                 <Button title={'Cancel'} onClick={onCancel} />
                 <Button title={'Back'} onClick={onBack} />
-                <Button title={'Finish'} onClick={onSubmit} />
+                <Button title={'Finish'} onClick={() => {
+                    onSubmit(recipe);
+                }} />
             </DialogActions>
         </>
     );

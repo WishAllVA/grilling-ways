@@ -6,6 +6,14 @@ import Posts from '../components/Posts/Posts'
 import CreatePost from '../components/CreatePost/CreatePost'
 import { routes, pageRoutes } from './api/routes'
 import PostProps from '../types/Post'
+import Recipe from '../types/Recipe'
+
+interface createRecipeApiRequest {
+  title: string
+  description: string
+  ingredients?: string[]
+  steps?: string[]
+}
 
 const Home: NextPage = ({
   homePageProps,
@@ -17,6 +25,21 @@ const Home: NextPage = ({
     const { title, description, id, author, comments, likes, liked, time, imageUrl } = element.attributes
     posts.push({ id: element.id, title, description, author, comments, likes, liked, time, imageUrl })
   });
+
+  const createPost = (recipe: Recipe) => {
+    const createPostPayload: createRecipeApiRequest = {
+      title: recipe.recipeTitle,
+      description: recipe.recipeDescription,
+    }
+    fetch(routes.createPost, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ data: createPostPayload })
+    })
+  }
+
   return (
     <div className={styles.container}>
       <Head>
@@ -27,7 +50,7 @@ const Home: NextPage = ({
 
       <main className={styles.main}>
         <div className="m-5">
-          <CreatePost />
+          <CreatePost createPost={createPost} />
         </div>
         <Posts posts={posts} />
 

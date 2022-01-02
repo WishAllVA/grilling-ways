@@ -55,12 +55,6 @@ const Home: NextPage = ({
           {
             session && <>
               <CreatePost createPost={createPost} />
-              <div>
-                Welcome {session.user?.email}
-                <Image src={session.user?.image || ''} width={200} height={200} >
-
-                </Image>
-              </div>
             </>
 
           }

@@ -11,7 +11,7 @@ import { useSession, signIn, signOut } from 'next-auth/react'
 const Navbar: React.FC = () => {
     const [openModal, setOpenModal] = React.useState(false);
     const { data: session, status } = useSession();
-    const navRoutes = session ? [...routes, { name: 'Logout', href: '/logout' }] : [...routes, { name: 'Login', href: '/login' }];
+    const navRoutes = session ? [...routes, { name: 'Logout', href: '/logout' }, { name: 'Profile', href: '/profile' }] : [...routes, { name: 'Login', href: '/login' }];
     const handleOpenModal = useCallback(() => {
         setOpenModal(true);
     }, []);

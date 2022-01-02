@@ -34,11 +34,11 @@ const ReviewModal: React.FC<RecipeModalProps> = ({ recipe, onSubmit, onBack, onC
                     </Typography>
                     {
                         ingredients?.map((ingredient, index) => (
-                            <div className="flex justify-around">
-                                <Typography key={index} variant="body1" className="flex-1">
+                            <div className="flex justify-around" key={index}>
+                                <Typography variant="body1" className="flex-1">
                                     {ingredient.ingredientName}
                                 </Typography>
-                                <Typography key={index} variant="body1" className="flex-1">
+                                <Typography variant="body1" className="flex-1">
                                     {ingredient.ingredientQuantity} &nbsp;
                                     {ingredient.ingredientUnit}
                                 </Typography>

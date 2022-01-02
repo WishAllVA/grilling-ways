@@ -12,7 +12,8 @@ module.exports = {
       'images.unsplash.com',
       'www.simplyrecipes.com',
       'www.vegrecipesofindia.com',
-      'cdn.vox-cdn.com'
+      'cdn.vox-cdn.com',
+      'lh3.googleusercontent.com',
     ],
   },
 }

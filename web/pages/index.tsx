@@ -53,7 +53,16 @@ const Home: NextPage = ({
       <main className={styles.main}>
         <div className="m-5">
           {
-            session && <CreatePost createPost={createPost} />
+            session && <>
+              <CreatePost createPost={createPost} />
+              <div>
+                Welcome {session.user?.email}
+                <Image src={session.user?.image || ''} width={200} height={200} >
+
+                </Image>
+              </div>
+            </>
+
           }
           {
             !session && <button onClick={() => signIn()}>Sign In</button>

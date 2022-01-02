@@ -25,8 +25,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <ThemeProvider theme={Theme}>
         <CssBaseline />
-        <Navbar />
         <SessionProvider session={pageProps.session}>
+          <Navbar />
           <Component {...pageProps} />
         </SessionProvider>
       </ThemeProvider>

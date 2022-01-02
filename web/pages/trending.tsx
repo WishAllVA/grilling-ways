@@ -2,18 +2,11 @@ import React, { useState, useEffect } from 'react';
 import type { GetServerSideProps, NextPage } from 'next'
 import NoAuth from '../components/Auth/NoAuth';
 import Head from 'next/head';
+import { useSession, signIn, signOut } from 'next-auth/react'
+
 
 const Trending: NextPage = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            if (window.localStorage.getItem('jwt')) {
-                setIsLoggedIn(true);
-                // window.location.href = '/';
-            }
-        }
-    }, []);
-
+    const { data: session, status } = useSession()
     return (
         <div>
             <Head>
@@ -21,7 +14,7 @@ const Trending: NextPage = () => {
             </Head>
             <h1>Trending</h1>
             {
-                isLoggedIn ?
+                session ?
                     <div>
                         <h1>You are logged in</h1>
                     </div>

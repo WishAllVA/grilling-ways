@@ -2,15 +2,16 @@ import React, { useCallback } from "react";
 import { Disclosure } from '@headlessui/react';
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./Navbar.module.css";
 import NavbarLink from "./components/NavbarLink";
 import { routes } from "./constants";
 import MobileMenu from "./components/MobileMenu";
 import MobileButton from "./components/MobileButton";
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 const Navbar: React.FC = () => {
     const [openModal, setOpenModal] = React.useState(false);
-
+    const { data: session, status } = useSession();
+    const navRoutes = session ? [...routes, { name: 'Logout', href: '/logout' }] : [...routes, { name: 'Login', href: '/login' }];
     const handleOpenModal = useCallback(() => {
         setOpenModal(true);
     }, []);
@@ -43,11 +44,11 @@ const Navbar: React.FC = () => {
                                 </div>
                             </div>
                             <div className="relative inset-y-0 right-0 flex items-center pr-2 lg:static lg:inset-auto lg:ml-6 lg:p-6">
-                                <NavbarLink routes={routes} />
+                                <NavbarLink routes={navRoutes} />
                             </div>
                         </div>
                     </div>
-                    <MobileMenu routes={routes} />
+                    <MobileMenu routes={navRoutes} />
                 </>
             )}
         </Disclosure>

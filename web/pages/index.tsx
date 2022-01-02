@@ -8,6 +8,7 @@ import { routes, pageRoutes } from './api/routes'
 import PostProps from '../types/Post'
 import Recipe from '../types/Recipe'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import Button from '../components/Button/Button'
 
 interface createRecipeApiRequest {
   title: string
@@ -59,7 +60,15 @@ const Home: NextPage = ({
 
           }
           {
-            !session && <button onClick={() => signIn()}>Sign In</button>
+            !session &&
+            <Button
+              title="Sign In"
+              onClick={() => signIn()}
+              style={{
+                backgroundColor: '#aad107',
+                color: '#fff',
+              }}
+            />
           }
         </div>
         <Posts posts={posts} />

@@ -41,7 +41,7 @@ const Login: React.FC<any> = ({ providers }) => {
     };
 
     return (
-        <Card className="md:w-4/12 mx-auto md:my-12 md:pt-12 px-6 flex flex-col justify-center">
+        <Card className="md:w-4/12 mx-auto md:my-12 md:pt-8 px-6 flex flex-col justify-center">
             <CardContent className="flex-col">
                 <div className="mb-10 ml-8">
                     <Typography variant="h5" component="h2">
@@ -59,7 +59,7 @@ const Login: React.FC<any> = ({ providers }) => {
                         onChange={(e) => setEmail(e.target.value)}
                     />
                 </div>
-                <div className="mb-5">
+                <div className="">
                     <TextField
                         label="Password"
                         variant="filled"
@@ -71,14 +71,17 @@ const Login: React.FC<any> = ({ providers }) => {
                 </div>
             </CardContent>
             <CardActions className="flex-col justify-around lg:mt-4 mb-4">
-                <div className="mb-4">
+                <div className="mb-6">
                     <Button title="Login" onClick={() => { login() }} />
                 </div>
-                <div className="flex">
+                <div className="flex mb-5">
                     <Typography style={{ lineHeight: '2.5rem' }} variant="body2" color="textSecondary" component="p">
                         Don&apos;t have an account?
                     </Typography>
-                    <Button title="Sign Up" onClick={() => { router.push('/signup') }} />
+                    <Button title="Sign Up" onClick={() => { router.push('/signup') }} style={{
+                        backgroundColor: '#fe5f55',
+                        marginLeft: '1rem'
+                    }} />
                 </div>
                 {/* <div className="flex">
                     <Typography style={{ lineHeight: '1.5rem' }} variant="body2" color="textSecondary" component="p">
@@ -86,7 +89,7 @@ const Login: React.FC<any> = ({ providers }) => {
                     </Typography>
                     <Facebook className="ml-2" style={{ cursor: 'pointer' }} onClick={() => { router.push(routes.google) }} />
                 </div> */}
-                <div className="flex-col px-12">
+                <div className="flex-col px-12 md:px-20">
                     {
                         providers ?
                             Object.values(providers).map((provider: any) => {
@@ -94,6 +97,11 @@ const Login: React.FC<any> = ({ providers }) => {
                                     key={provider.id}
                                     title={`Login with ${provider.name}`}
                                     onClick={() => { signIn(provider.id, { callbackUrl: `${window.location.origin}/` }) }}
+                                    style={{
+                                        backgroundColor: '#0077b5',
+                                        // color: '#a3a3a3',
+                                        margin: '5px 0 5px 0'
+                                    }}
                                 />
                             }) : null
                     }

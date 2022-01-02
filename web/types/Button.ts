@@ -7,6 +7,9 @@ interface Button {
         width?: string;
         height?: string;
         display?: string;
+        margin?: string;
+        marginRight?: string;
+        marginLeft?: string;
     };
 }
 

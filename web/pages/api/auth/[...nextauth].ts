@@ -16,7 +16,8 @@ const options = {
     ],
     pages: {
         signIn: '/login',
-    }
+    },
+    secret: process.env.SECRET || '',
 }
 
 export default (req: NextApiRequest, res: NextApiResponse<any>) => NextAuth(req, res, options);

@@ -6,11 +6,13 @@ import LikeButton from "../LikeButton/LikeButton";
 import CommentButton from "../CommentButton/CommentButton";
 import ShareButton from "../ShareButton/ShareButton";
 import CommentsModal from "../CommentButton/CommentModal";
+import { useSession } from "next-auth/react";
 
 const Post: React.FC<Post> = ({ title, description, author, id, comments, likes = 0, liked, time, imageUrl }: Post) => {
     const [likesCount, setLikesCount] = React.useState(likes);
     const [likedByUser, setLikedByUser] = React.useState(liked);
     const [commentsModal, setCommentsModal] = React.useState(false);
+    const { data: session } = useSession();
     const handleLike = () => {
         setLikedByUser(!likedByUser);
         setLikesCount(likedByUser ? likesCount - 1 : likesCount + 1);
@@ -35,21 +37,23 @@ const Post: React.FC<Post> = ({ title, description, author, id, comments, likes 
                     src={imageUrl || ''} alt="Butter Chicken"
                 />
                 <p>{description}</p>
-                <div className="flex-row flex justify-items space-between">
-                    <div className="mr-2 flex-1">
-                        <LikeButton
-                            likes={likesCount}
-                            onLike={handleLike}
-                            liked={likedByUser}
-                        />
+                {
+                    session && <div className="flex-row flex justify-items space-between">
+                        <div className="mr-2 flex-1">
+                            <LikeButton
+                                likes={likesCount}
+                                onLike={handleLike}
+                                liked={likedByUser}
+                            />
+                        </div>
+                        <div className="mr-2 flex-1">
+                            <CommentButton onClick={() => { setCommentsModal(true) }} />
+                        </div>
+                        <div className="flex-1">
+                            <ShareButton />
+                        </div>
                     </div>
-                    <div className="mr-2 flex-1">
-                        <CommentButton onClick={() => { setCommentsModal(true) }} />
-                    </div>
-                    <div className="flex-1">
-                        <ShareButton />
-                    </div>
-                </div>
+                }
             </div>
         </>
     )

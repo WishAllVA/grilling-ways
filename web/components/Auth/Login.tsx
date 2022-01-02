@@ -4,8 +4,9 @@ import { Facebook } from '@material-ui/icons';
 import Button from "../Button/Button";
 import Router, { useRouter } from "next/router";
 import { routes } from '../../pages/api/routes';
+import { signIn } from 'next-auth/react';
 
-const Login: React.FC = () => {
+const Login: React.FC<any> = ({ providers }) => {
     const [email, setEmail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const router = useRouter();
@@ -79,13 +80,23 @@ const Login: React.FC = () => {
                     </Typography>
                     <Button title="Sign Up" onClick={() => { router.push('/signup') }} />
                 </div>
-                <div className="flex">
+                {/* <div className="flex">
                     <Typography style={{ lineHeight: '1.5rem' }} variant="body2" color="textSecondary" component="p">
                         Login with
                     </Typography>
                     <Facebook className="ml-2" style={{ cursor: 'pointer' }} onClick={() => { router.push(routes.google) }} />
-                    {/* <Button title="Google" onClick={() => { router.push(routes.google) }} /> */}
-
+                </div> */}
+                <div className="flex-col px-12">
+                    {
+                        providers ?
+                            Object.values(providers).map((provider: any) => {
+                                return <Button
+                                    key={provider.id}
+                                    title={`Login with ${provider.name}`}
+                                    onClick={() => { signIn(provider.id, { callbackUrl: `${window.location.origin}/` }) }}
+                                />
+                            }) : null
+                    }
                 </div>
             </CardActions>
         </Card >

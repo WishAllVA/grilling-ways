@@ -7,6 +7,7 @@ import CreatePost from '../components/CreatePost/CreatePost'
 import { routes, pageRoutes } from './api/routes'
 import PostProps from '../types/Post'
 import Recipe from '../types/Recipe'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 interface createRecipeApiRequest {
   title: string
@@ -19,6 +20,7 @@ const Home: NextPage = ({
   homePageProps,
   postsProps
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
+  const { data: session, status } = useSession()
   const posts: PostProps[] = []
   const { data } = postsProps
   data?.forEach((element: any) => {
@@ -50,7 +52,12 @@ const Home: NextPage = ({
 
       <main className={styles.main}>
         <div className="m-5">
-          <CreatePost createPost={createPost} />
+          {
+            session && <CreatePost createPost={createPost} />
+          }
+          {
+            !session && <button onClick={() => signIn()}>Sign In</button>
+          }
         </div>
         <Posts posts={posts} />
 
@@ -68,7 +75,7 @@ const Home: NextPage = ({
           </span>
         </a>
       </footer>
-    </div >
+    </div>
   )
 }
 

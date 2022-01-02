@@ -7,6 +7,7 @@ import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Theme from '../components/Theme/Theme'
 import Navbar from '../components/Navbar/Navbar'
+import { SessionProvider } from 'next-auth/react'
 
 function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={Theme}>
         <CssBaseline />
         <Navbar />
-        <Component {...pageProps} />
+        <SessionProvider session={pageProps.session}>
+          <Component {...pageProps} />
+        </SessionProvider>
       </ThemeProvider>
     </React.Fragment>
   )

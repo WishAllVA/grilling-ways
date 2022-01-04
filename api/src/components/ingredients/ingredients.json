@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_ingredients_ingredients",
+  "info": {
+    "displayName": "Ingredients",
+    "icon": "crutch"
+  },
+  "options": {},
+  "attributes": {
+    "ingredientName": {
+      "type": "string"
+    },
+    "ingredientQuantity": {
+      "type": "float"
+    },
+    "ingredientUnit": {
+      "type": "string"
+    }
+  }
+}
